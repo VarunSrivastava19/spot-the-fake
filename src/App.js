@@ -1,24 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import { Container } from "react-bootstrap";
+import { Button, Container, Row } from "react-bootstrap";
 import AppBar from "./components/AppBar/index,";
 import Timer from "./components/Timer";
 import Displayer from "./components/Displayer";
 import ImgList from "./utils/imagePairs";
 import ViewScore from "./components/ViewScore";
-
-const imageList = new ImgList();
-const imgs = imageList.images;
-
+let imageList = new ImgList();
+let imgs = imageList.images;
 function App() {
-  const handleClick = (e, type) => {
-    e.preventDefault();
-    const next =
-      "If All Image pairs have been displayed : Show score screen/page, else next image pair and increment counter.";
-    const reset =
-      "Reload the app while resetting the order, only show this button on Score screen.";
-    alert(type === "next" ? next : reset);
-  };
   const [currentPair, setCurrentPair] = useState(0);
   const [score, setScore] = useState(0);
   const [hasScored, setHasScored] = useState(false);
@@ -75,29 +65,46 @@ function App() {
     }
   };
 
+  const handleReset = () => {
+    imageList = new ImgList();
+    imgs = imageList.images;
+    setCurrentPair(0);
+    setSelectedImg("");
+    setTimeRemaining(0);
+    setScore(0);
+    setHasScored(false);
+    setNext("Next");
+    setQuizOver(false);
+  };
+
   return (
     <>
       <AppBar currentPair={currentPair} />
       {quizOver ? (
-        <ViewScore score={score} />
+        <ViewScore score={score} onReset={handleReset} />
       ) : (
         <Container>
-          <div>
-            <Timer timeRemaining={timeRemaining} />
-          </div>
-          Select the Counterfeit website screenshot from the following image
-          pairs.
-          <Displayer
-            currentPair={imgs[currentPair]}
-            handleImgSelect={handleImgSelect}
-            selectedImg={selectedImg}
-          />
-          <div>
-            <button onClick={(e) => handleNext()}>{next}</button>
-          </div>
-          <div>
-            <button onClick={(e) => handleClick(e, "reset")}>Reset</button>
-          </div>
+          <Row xs={1}>
+            <div>
+              <Timer timeRemaining={timeRemaining} />
+            </div>
+            <div>
+              <p>
+              Select the Counterfeit website screenshot from the following image
+            pairs.
+              </p>
+            </div>
+            <Displayer
+              currentPair={imgs[currentPair]}
+              handleImgSelect={handleImgSelect}
+              selectedImg={selectedImg}
+            />
+            <div>
+              <Button variant="outline-primary" onClick={(e) => handleNext()}>
+                {next}
+              </Button>
+            </div>
+          </Row>
         </Container>
       )}
     </>

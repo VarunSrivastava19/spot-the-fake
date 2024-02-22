@@ -1,5 +1,5 @@
 export default class ImgList {
-  imagePairs = [
+  #imagePairs = [
     { real: `${1}-correct.png`, fake: `${1}-fake.png` },
     { real: `${2}-correct.png`, fake: `${2}-fake.png` },
     { real: `${3}-correct.png`, fake: `${3}-fake.png` },
@@ -13,20 +13,20 @@ export default class ImgList {
   ];
 
   get images() {
-    let currentIndex = this.imagePairs.length;
+    let currentIndex = this.#imagePairs.length;
     let temp, randIdx;
     while (currentIndex !== 0) {
       randIdx = Math.floor(Math.random() * currentIndex);
       currentIndex -= 1;
-      temp = this.imagePairs[currentIndex];
-      this.imagePairs[currentIndex] = this.imagePairs[randIdx];
-      this.imagePairs[randIdx] = temp;
+      temp = this.#imagePairs[currentIndex];
+      this.#imagePairs[currentIndex] = this.#imagePairs[randIdx];
+      this.#imagePairs[randIdx] = temp;
     }
-    return this.imagePairs;
+    return this.#imagePairs;
   }
 
   get randomImg() {
-    let cp = this.imagePairs.slice(0);
+    let cp = this.#imagePairs.slice(0);
     return function () {
       if (cp.length < 1) cp = this.imagePairs.slice(0);
       let index = Math.floor(Math.random() * cp.length);
