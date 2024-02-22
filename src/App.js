@@ -1,11 +1,14 @@
 import { useEffect, useRef, useState } from "react";
+import "bootstrap-icons/font/bootstrap-icons.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import { Button, Container, Row } from "react-bootstrap";
-import AppBar from "./components/AppBar/index,";
+import { Container, Row } from "react-bootstrap";
+import AppBar from "./components/AppBar";
 import Timer from "./components/Timer";
 import Displayer from "./components/Displayer";
 import ImgList from "./utils/imagePairs";
-import ViewScore from "./components/ViewScore";
+import Jumbo from "./components/ViewScore";
+import StyledButton from "./components/Button";
+import FootBar from "./components/FootBar";
 let imageList = new ImgList();
 let imgs = imageList.images;
 function App() {
@@ -24,6 +27,7 @@ function App() {
           setCurrentPair((prev) => prev + 1);
           setSelectedImg("");
           setTimeRemaining(0);
+          setHasScored(false);
         } else {
           clearTimeout(timeout.current);
           setQuizOver(true);
@@ -55,10 +59,8 @@ function App() {
     if (type === "fake" && !hasScored) {
       setScore((prev) => prev + 1);
       setHasScored(true);
-      console.log(`Score Updated ${score}`);
     } else {
       if (hasScored && type !== "fake") {
-        console.log("Real Image - decrement score for this pair, if it's 1");
         setScore((prev) => prev - 1);
         setHasScored(false);
       }
@@ -66,6 +68,11 @@ function App() {
   };
 
   const handleReset = () => {
+    /*
+      To store the scores ->
+      in localstorage of browser
+      add funct here
+    */
     imageList = new ImgList();
     imgs = imageList.images;
     setCurrentPair(0);
@@ -79,11 +86,11 @@ function App() {
 
   return (
     <>
-      <AppBar currentPair={currentPair} score={score} />
-      <Container>
-        {quizOver ? (
-          <ViewScore className="p-5" score={score} onReset={handleReset} />
-        ) : (
+      <AppBar />
+      {quizOver ? (
+        <Jumbo className="p-5" score={score} onReset={handleReset} />
+      ) : (
+        <Container>
           <Row
             xs={1}
             className="d-flex justify-content-center align-items-center"
@@ -103,13 +110,14 @@ function App() {
               selectedImg={selectedImg}
             />
             <div className="d-flex justify-content-center align-items-center p-5">
-              <Button variant="outline-primary" onClick={handleNext}>
+              <StyledButton stylecolor="#ceaae4" onClick={handleNext}>
                 {next}
-              </Button>
+              </StyledButton>
             </div>
           </Row>
-        )}
-      </Container>
+        </Container>
+      )}
+      <FootBar />
     </>
   );
 }

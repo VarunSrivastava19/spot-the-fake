@@ -2,8 +2,7 @@ import { Navbar } from "react-bootstrap";
 import styled from "styled-components";
 
 const StyledBar = styled(Navbar)`
-  background: ${(props) =>
-    typeof props.backgroundColor ? "#ceaae4" : props.backgroundColor};
+  background: #ceaae4;
   display: flex;
   width: 100%;
   justify-content: center;

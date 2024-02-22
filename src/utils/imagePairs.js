@@ -1,15 +1,15 @@
 export default class ImgList {
   #imagePairs = [
-    { real: `${1}-correct.png`, fake: `${1}-fake.png` },
-    { real: `${2}-correct.png`, fake: `${2}-fake.png` },
-    { real: `${3}-correct.png`, fake: `${3}-fake.png` },
-    { real: `${4}-correct.png`, fake: `${4}-fake.png` },
-    { real: `${5}-correct.png`, fake: `${5}-fake.png` },
-    { real: `${6}-correct.png`, fake: `${6}-fake.png` },
-    { real: `${7}-correct.png`, fake: `${7}-fake.png` },
-    { real: `${8}-correct.png`, fake: `${8}-fake.png` },
-    { real: `${9}-correct.png`, fake: `${9}-fake.png` },
-    { real: `${10}-correct.png`, fake: `${10}-fake.png` },
+    { real: "1-correct.png", fake: "1-fake.png" },
+    { real: "2-correct.png", fake: "2-fake.png" },
+    { real: "3-correct.png", fake: "3-fake.png" },
+    { real: "4-correct.png", fake: "4-fake.png" },
+    { real: "5-correct.png", fake: "5-fake.png" },
+    { real: "6-correct.png", fake: "6-fake.png" },
+    { real: "7-correct.png", fake: "7-fake.png" },
+    { real: "8-correct.png", fake: "8-fake.png" },
+    { real: "9-correct.png", fake: "9-fake.png" },
+    { real: "10-correct.png", fake: "10-fake.png" },
   ];
 
   get images() {

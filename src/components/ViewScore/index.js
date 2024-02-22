@@ -1,49 +1,39 @@
-import { Row, Col, Card } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import ScoredMessages from "../../utils/scoredMessages";
-import { CardButton, CardFooter } from "./style";
-function ViewScore({ score, onReset, ...props }) {
+import StyledButton from "../Button";
+function Jumbo({ score, onReset, ...props }) {
   const scoreRange = ScoredMessages.getMessage(score);
   return (
-    <Row {...props}>
-      <Col>
-        <Card
-          border={
-            scoreRange.max === 3
-              ? "danger"
-              : scoreRange.max === 6
-              ? "warning"
-              : "success"
-          }
-        >
-          <Card.Header style={scoreRange.styles}>
-            <Card.Title>
-              <h3>Score</h3>
-            </Card.Title>
-          </Card.Header>
-          <Card.Body>
-            <Card.Subtitle>
-              <span className="lead">{`Score : ${score}`}</span>
-            </Card.Subtitle>
-            <p>{`${scoreRange.message}`}</p>
-          </Card.Body>
-          <CardFooter>
-            <CardButton
-              variant={`outline-${
-                scoreRange.max === 3
-                  ? "danger"
-                  : scoreRange.max === 6
-                  ? "warning"
-                  : "success"
-              }`}
-              onClick={onReset}
-            >
-              Reset
-            </CardButton>
-          </CardFooter>
-        </Card>
-      </Col>
-    </Row>
+    <>
+      <Container
+        fluid
+        style={scoreRange.styles}
+        className="
+        border-3 border-bottom border-dark"
+      >
+        <div className="pt-5 pb-5 px-4">
+          <h3 className="display-3">Result</h3>
+          <p className="lead">{`Score : ${score}`}</p>
+          <p className="py-2 border-bottom">{`${scoreRange.message}`}</p>
+          <StyledButton
+            stylecolor={
+              scoreRange.max === 3
+                ? "tomato"
+                : scoreRange.max === 6
+                ? "#ffc107"
+                : "#198754"
+            }
+            onClick={onReset}
+          >
+            <span>
+              <i className="bi bi-arrow-counterclockwise"> </i>
+            </span>
+            Reset
+          </StyledButton>
+        </div>
+      </Container>
+    </>
   );
 }
 
-export default ViewScore;
+export default Jumbo;
