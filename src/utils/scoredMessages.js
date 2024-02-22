@@ -4,7 +4,7 @@ class ScoredMessages {
       min: 0,
       max: 3,
       message:
-        "Gullible: You need to work on your ability to identify fake websites. Cybersecurity is a crucial skill in the digital age, and being able to distinguish between real and fake websites can help protect you from scams and phishing attacks.",
+        "Gullible: You need to work on your ability to identify fake websites.",
       styles: {
         color: "white",
         backgroundColor: "tomato",
@@ -14,7 +14,7 @@ class ScoredMessages {
       min: 4,
       max: 6,
       message:
-        "Satisfactory: You have a decent ability to identify fake websites, but there is still room for improvement. Keep learning and practicing to enhance your cybersecurity skills.",
+        "Satisfactory: You have a decent ability to identify fake websites, but there is still room for improvement.",
       styles: {
         color: "black",
         backgroundColor: "#ffc107",
@@ -24,7 +24,7 @@ class ScoredMessages {
       min: 7,
       max: 10,
       message:
-        "Keep your guard up: Great job! You have a strong ability to identify fake websites. However, cyber threats are always evolving, so it's important to stay vigilant and keep your cybersecurity knowledge up-to-date.",
+        "Keep your guard up: Great job! You have a strong ability to identify fake websites.",
       styles: {
         color: "white",
         backgroundColor: "#198754",

@@ -79,19 +79,22 @@ function App() {
 
   return (
     <>
-      <AppBar currentPair={currentPair} />
-      {quizOver ? (
-        <ViewScore score={score} onReset={handleReset} />
-      ) : (
-        <Container>
-          <Row xs={1}>
-            <div>
+      <AppBar currentPair={currentPair} score={score} />
+      <Container>
+        {quizOver ? (
+          <ViewScore className="p-5" score={score} onReset={handleReset} />
+        ) : (
+          <Row
+            xs={1}
+            className="d-flex justify-content-center align-items-center"
+          >
+            <div className="p-5">
               <Timer timeRemaining={timeRemaining} />
             </div>
             <div>
               <p>
-              Select the Counterfeit website screenshot from the following image
-            pairs.
+                Select the Counterfeit website screenshot from the following
+                image pairs.
               </p>
             </div>
             <Displayer
@@ -99,14 +102,14 @@ function App() {
               handleImgSelect={handleImgSelect}
               selectedImg={selectedImg}
             />
-            <div>
-              <Button variant="outline-primary" onClick={(e) => handleNext()}>
+            <div className="d-flex justify-content-center align-items-center p-5">
+              <Button variant="outline-primary" onClick={handleNext}>
                 {next}
               </Button>
             </div>
           </Row>
-        </Container>
-      )}
+        )}
+      </Container>
     </>
   );
 }

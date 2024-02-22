@@ -5,7 +5,7 @@ import Image from "../Image";
 function Displayer({ currentPair, handleImgSelect, selectedImg }) {
   const rid = useId();
   return (
-    <Row xs={1} md={2} lg={2} className="g-4 mt-4">
+    <Row xs={1} md={1} lg={2} className="g-4 mt-4">
       <Image
         key={`${rid}-correct`}
         id={`${rid}-correct`}

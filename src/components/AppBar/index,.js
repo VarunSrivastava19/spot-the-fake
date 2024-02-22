@@ -1,8 +1,10 @@
 import { Navbar } from "react-bootstrap";
 import StyledBar from "./style";
-function AppBar({ currentPair }) {
+import ScoredMessages from "../../utils/scoredMessages";
+function AppBar({ currentPair, score }) {
+  const scoreRange = ScoredMessages.getMessage(score);
   return (
-    <StyledBar>
+    <StyledBar backgroundColor={scoreRange.styles.backgroundColor}>
       <Navbar.Brand>Pair: {currentPair}</Navbar.Brand>
     </StyledBar>
   );
