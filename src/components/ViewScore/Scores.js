@@ -7,7 +7,7 @@ function Scores({ scores }) {
     <>
       {scores && scores.length > 0 ? (
         <Page className="pt-2">
-          <Table responsive="sm">
+          <Table responsive="sm" hover>
             <thead>
               <tr>
                 <th>#</th>

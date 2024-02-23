@@ -5,7 +5,7 @@ import { useState } from "react";
 import SignUp from "./SignUp";
 import useStorage from "../../hooks/useStorage";
 import Scores from "./Scores";
-function Jumbo({ score, onReset, ...props }) {
+function ViewScore({ score, onReset, ...props }) {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
@@ -44,7 +44,7 @@ function Jumbo({ score, onReset, ...props }) {
               </span>
               Reset
             </StyledButton>
-            <StyledButton onClick={handleShow} className="ms-2">
+            <StyledButton stylecolor="#ceaae4" onClick={handleShow} className="ms-2">
               <span>
                 <i className="bi bi-person-plus"> </i>
               </span>
@@ -59,4 +59,4 @@ function Jumbo({ score, onReset, ...props }) {
   );
 }
 
-export default Jumbo;
+export default ViewScore;

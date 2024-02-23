@@ -6,7 +6,7 @@ import AppBar from "./components/AppBar";
 import Timer from "./components/Timer";
 import Displayer from "./components/Displayer";
 import ImgList from "./utils/imagePairs";
-import Jumbo from "./components/ViewScore";
+import ViewScore from "./components/ViewScore";
 import StyledButton from "./components/Button";
 import FootBar from "./components/FootBar";
 import Page from "./components/Page";
@@ -70,11 +70,6 @@ function App() {
   };
 
   const handleReset = () => {
-    /*
-      To store the scores ->
-      in localstorage of browser
-      add funct here
-    */
     imageList = new ImgList();
     imgs = imageList.images;
     setCurrentPair(0);
@@ -90,7 +85,7 @@ function App() {
     <>
       <AppBar />
       {quizOver ? (
-        <Jumbo className="p-5" score={score} onReset={handleReset} />
+        <ViewScore className="p-5" score={score} onReset={handleReset} />
       ) : (
         <Page>
           <Row
