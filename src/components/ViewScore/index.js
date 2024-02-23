@@ -1,4 +1,4 @@
-import { Col, Container, Row } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import ScoredMessages from "../../utils/scoredMessages";
 import StyledButton from "../Button";
 import { useState } from "react";
