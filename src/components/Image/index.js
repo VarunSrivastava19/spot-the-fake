@@ -1,9 +1,9 @@
 import { Card, Col } from "react-bootstrap";
-import Choice from "./style";
+import { Option, Choice } from "./style";
 
 function Image({ imgNo, type, onSelect, isSelected, props }) {
   return (
-    <Col>
+    <Option>
       <Choice>
         <Card.Img
           src={`/data/${imgNo[type]}`}
@@ -24,7 +24,7 @@ function Image({ imgNo, type, onSelect, isSelected, props }) {
           {...props}
         />
       </Choice>
-    </Col>
+    </Option>
   );
 }
 export default Image;

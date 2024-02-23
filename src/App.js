@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import { Container, Row } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 import AppBar from "./components/AppBar";
 import Timer from "./components/Timer";
 import Displayer from "./components/Displayer";
@@ -9,6 +9,7 @@ import ImgList from "./utils/imagePairs";
 import Jumbo from "./components/ViewScore";
 import StyledButton from "./components/Button";
 import FootBar from "./components/FootBar";
+import Page from "./components/Page";
 let imageList = new ImgList();
 let imgs = imageList.images;
 function App() {
@@ -90,7 +91,7 @@ function App() {
       {quizOver ? (
         <Jumbo className="p-5" score={score} onReset={handleReset} />
       ) : (
-        <Container>
+        <Page>
           <Row
             xs={1}
             className="d-flex justify-content-center align-items-center"
@@ -99,7 +100,7 @@ function App() {
               <Timer timeRemaining={timeRemaining} />
             </div>
             <div>
-              <p>
+              <p className="text-center text-wrap fs-4">
                 Select the Counterfeit website screenshot from the following
                 image pairs.
               </p>
@@ -115,7 +116,7 @@ function App() {
               </StyledButton>
             </div>
           </Row>
-        </Container>
+        </Page>
       )}
       <FootBar />
     </>
