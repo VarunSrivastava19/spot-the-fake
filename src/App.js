@@ -31,9 +31,9 @@ function App() {
           setHasScored(false);
         } else {
           clearTimeout(timeout.current);
+          setNext("View Score");
           setQuizOver(true);
           setHasScored(false);
-          setNext("View Score");
         }
       } else {
         setTimeRemaining((prevTime) => prevTime + 1);
@@ -50,8 +50,9 @@ function App() {
       setHasScored(false);
     } else {
       clearTimeout(timeout.current);
-      setQuizOver(true);
       setNext("View Score");
+      setQuizOver(true);
+      setHasScored(false);
     }
   };
 

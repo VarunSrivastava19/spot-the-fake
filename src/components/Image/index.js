@@ -1,4 +1,4 @@
-import { Card, Col } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { Option, Choice } from "./style";
 
 function Image({ imgNo, type, onSelect, isSelected, props }) {
