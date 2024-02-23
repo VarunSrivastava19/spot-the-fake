@@ -10,9 +10,13 @@ function Image({ imgNo, type, onSelect, isSelected, props }) {
           onClick={onSelect}
           style={
             isSelected
-              ? {
-                  border: "4px solid #4D2169",
-                }
+              ? type === "fake"
+                ? {
+                    border: "4px solid #47FF63",
+                  }
+                : {
+                    border: "4px solid tomato",
+                  }
               : {}
           }
           width="100%"
