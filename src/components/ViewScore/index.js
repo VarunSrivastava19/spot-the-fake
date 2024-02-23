@@ -1,8 +1,21 @@
-import { Container } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import ScoredMessages from "../../utils/scoredMessages";
 import StyledButton from "../Button";
+import { useState } from "react";
+import SignUp from "./SignUp";
+import useStorage from "../../hooks/useStorage";
+import Scores from "./Scores";
 function Jumbo({ score, onReset, ...props }) {
+  const [show, setShow] = useState(false);
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
   const scoreRange = ScoredMessages.getMessage(score);
+  const [, , getData] = useStorage("data", []);
+  const scores = getData();
+  const sortedScores = scores && scores.sort((a, b) => b.score - a.score);
+  if (sortedScores.length >= 10) {
+    sortedScores.splice(10, sortedScores.length - 10);
+  }
   return (
     <>
       <Container
@@ -15,23 +28,33 @@ function Jumbo({ score, onReset, ...props }) {
           <h3 className="display-3">Result</h3>
           <p className="lead">{`Score : ${score}`}</p>
           <p className="py-2 border-bottom">{`${scoreRange.message}`}</p>
-          <StyledButton
-            stylecolor={
-              scoreRange.max === 3
-                ? "tomato"
-                : scoreRange.max === 6
-                ? "#ffc107"
-                : "#198754"
-            }
-            onClick={onReset}
-          >
-            <span>
-              <i className="bi bi-arrow-counterclockwise"> </i>
-            </span>
-            Reset
-          </StyledButton>
+          <div className="d-flex justify-content-end align-items-center">
+            <StyledButton
+              stylecolor={
+                scoreRange.max === 3
+                  ? "tomato"
+                  : scoreRange.max === 6
+                  ? "#ffc107"
+                  : "#198754"
+              }
+              onClick={onReset}
+            >
+              <span>
+                <i className="bi bi-arrow-counterclockwise"> </i>
+              </span>
+              Reset
+            </StyledButton>
+            <StyledButton onClick={handleShow} className="ms-2">
+              <span>
+                <i className="bi bi-person-plus"> </i>
+              </span>
+              Sign Up
+            </StyledButton>
+          </div>
         </div>
       </Container>
+      <SignUp show={show} handleClose={handleClose} score={score} />
+      <Scores scores={sortedScores} />
     </>
   );
 }

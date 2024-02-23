@@ -8,7 +8,7 @@ const StyledButton = styled(Button)`
   border-radius: 2.5%;
   &:hover {
     border: 2px solid black;
-    background: ${(props) => props.stylecolor || "white"};
+    background: ${(props) => props.stylecolor || "black"};
     color: white;
     filter: drop-shadow(1px 2px 6px grey);
   }
